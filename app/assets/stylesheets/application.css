@@ -12,3 +12,8 @@
  *= require_tree .
  *= require bootstrap_and_overrides
  */
+
+h1 a:hover {
+  text-decoration: none;
+}
+

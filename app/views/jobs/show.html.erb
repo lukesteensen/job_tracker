@@ -1,28 +1,42 @@
-<h1><%= @job.title + " at " + @job.company.name %></h1>
+<div class="row">
+  <div class="span12">
+    <h1><%= @job.title %> at <%= link_to@job.company.name, @job.company %></h1>
+    <div class="row">
+      <div class="span9">
+        <%= simple_format @job.description %>
+        <br />
+        <% unless @job.applied %>
+          <%= link_to "Apply here", @job.application_url, class: "btn btn-primary" %>
+        <% end %>
+        <%= link_to "Edit Job", edit_job_path(@job), class: "btn" %>
+      </div>
+      <div class="span3">
+        Technologies
+        <ul>
+          <% @job.technologies.each do |t| %>
+            <li><%= t.name %></li>
+        <% end %>
+        </ul>
 
-<blockquote><%= simple_format @job.description %></blockquote>
+        Cities
+        <ul>
+          <% @job.cities.each do |t| %>
+            <li><%= t.name %></li>
+        <% end %>
+        </ul>
 
-Technologies
-<ul>
-  <% @job.technologies.each do |t| %>
-    <li><%= t.name %></li>
-  <% end %>
-</ul>
-
-Cities
-<ul>
-  <% @job.cities.each do |t| %>
-    <li><%= t.name %></li>
-  <% end %>
-</ul>
-
-<p>
-  <strong>Travel:</strong> <%= @job.travel_percentage %>%<br />
-  <strong>Challenge:</strong> <%= @job.likelihood_factor %>%<br />
-  <strong>Likelihood:</strong> <%= @job.challenge_factor %>%<br />
-</p>
-
-<% unless @job.applied %>
-  <%= link_to "Apply here", @job.application_url, class: "btn btn-primary" %>
-<% end %>
-
+        <p>
+          <strong>Cover letter?</strong>
+          <%= @job.requires_cover_letter ? "Yes" : "No" %><br />
+          <strong>Long application?</strong>
+          <%= @job.requires_long_application ? "Yes" : "No" %>
+        </p>
+        <p>
+          <strong>Travel:</strong> <%= @job.travel_percentage %>%<br />
+          <strong>Challenge:</strong> <%= @job.likelihood_factor %>%<br />
+          <strong>Likelihood:</strong> <%= @job.challenge_factor %>%<br />
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

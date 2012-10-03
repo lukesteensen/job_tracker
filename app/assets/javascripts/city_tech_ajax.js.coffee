@@ -9,7 +9,7 @@ $(document).ready ->
           city:
             name: name
         success: (response) ->
-          $("#job_city_ids").append(
+          $("#job_city_ids").prepend(
             "<option value=\"#{ response.id }\">#{ response.name }</option>"
           )
           $("#new_city").val("")
@@ -28,7 +28,7 @@ $(document).ready ->
           technology:
             name: name
         success: (response) ->
-          $("#job_technology_ids").append(
+          $("#job_technology_ids").prepend(
             "<option value=\"#{ response.id }\">#{ response.name }</option>"
           )
           $("#new_technology").val("")
@@ -37,7 +37,37 @@ $(document).ready ->
     else
       alert "Invalid technology name"
 
-  $("#new_city, #new_technology").keypress (event) ->
+  $("#add_company_button").bind "click", (event) ->
+    name = $("#new_company").val()
+    if name.length > 3
+      $.ajax(
+        type: "POST"
+        url: '/companies'
+        data:
+          company:
+            name: name
+        success: (response) ->
+          $("#job_company_id").append(
+            "<option value=\"#{ response.id }\">#{ response.name }</option>"
+          )
+          $("#new_company").val("")
+        dataType: "json"
+      )
+    else
+      alert "Invalid company name"
+
+  $("#new_city").keypress (event) ->
     if event.keyCode == 13
       event.preventDefault()
+      $("#add_city_button").trigger "click"
+
+  $("#new_technology").keypress (event) ->
+    if event.keyCode == 13
+      event.preventDefault()
+      $("#add_technology_button").trigger "click"
+
+  $("#new_company").keypress (event) ->
+    if event.keyCode == 13
+      event.preventDefault()
+      $("#add_company_button").trigger "click"
 

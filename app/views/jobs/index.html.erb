@@ -5,6 +5,8 @@
     <th>Cities</th>
     <th>Technologies</th>
     <th>Applied?</th>
+    <th>Cover Letter?</th>
+    <th>Long App?</th>
   </thead>
   <tbody>
     <% @jobs.each do |j| %>
@@ -14,6 +16,8 @@
         <td><%= j.city_names %></td>
         <td><%= j.technology_names %></td>
         <td><%= j.applied ? "Yes" : "No" %></td>
+        <td><%= j.requires_cover_letter ? "Yes" : "No" %></td>
+        <td><%= j.requires_long_application ? "Yes" : "No" %></td>
       </tr>
     <% end %>
   </tbody>
