@@ -1,0 +1,29 @@
+<%= simple_form_for @job do |f| %>
+  <%= f.association :company, include_blank: false %>
+  <%= f.input :title, input_html: { class: 'span6' } %>
+  <%= f.input :description, input_html: { rows: 5, class: 'span6' } %>
+  <%= f.association :cities %>
+  <input type="text" id="new_city" placeholder="Add a city..." /><br />
+  <a class="btn" id="add_city_button">Add city</a><br /><br />
+  <%= f.association :technologies %>
+  <input type="text" id="new_technology" placeholder="Add a technology..." /><br />
+  <a class="btn" id="add_technology_button">Add technology</a><br /><br />
+  <%= f.input :application_url, label: "Application URL", input_html: { class: 'span6' } %>
+  <%= f.input :requires_cover_letter %>
+  <%= f.input :requires_long_application %>
+  <%= f.input :challenge_factor, :wrapper => :append do %>
+    <%= f.input_field :challenge_factor, class: 'span1' %>
+    <span class="add-on">%</span>
+  <% end %>
+  <%= f.input :likelihood_factor, :wrapper => :append do %>
+    <%= f.input_field :likelihood_factor, class: 'span1' %>
+    <span class="add-on">%</span>
+  <% end %>
+  <%= f.input :travel_percentage, :wrapper => :append do %>
+    <%= f.input_field :travel_percentage, class: 'span1' %>
+    <span class="add-on">%</span>
+  <% end %>
+  <br />
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
+

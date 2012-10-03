@@ -1,0 +1,28 @@
+<h1><%= @job.title + " at " + @job.company.name %></h1>
+
+<blockquote><%= simple_format @job.description %></blockquote>
+
+Technologies
+<ul>
+  <% @job.technologies.each do |t| %>
+    <li><%= t.name %></li>
+  <% end %>
+</ul>
+
+Cities
+<ul>
+  <% @job.cities.each do |t| %>
+    <li><%= t.name %></li>
+  <% end %>
+</ul>
+
+<p>
+  <strong>Travel:</strong> <%= @job.travel_percentage %>%<br />
+  <strong>Challenge:</strong> <%= @job.likelihood_factor %>%<br />
+  <strong>Likelihood:</strong> <%= @job.challenge_factor %>%<br />
+</p>
+
+<% unless @job.applied %>
+  <%= link_to "Apply here", @job.application_url, class: "btn btn-primary" %>
+<% end %>
+

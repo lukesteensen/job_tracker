@@ -1,14 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>JobTracker</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+<title>JobTracker</title>
+<%= stylesheet_link_tag    "application", :media => "all" %>
+<%= javascript_include_tag "application" %>
+<%= csrf_meta_tags %>
+<style>
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
+</style>
 </head>
 <body>
-
-<%= yield %>
-
+<div class="container">
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a href="<%= root_path %>" class="brand">Job Tracker</a>
+        <ul class="nav">
+          <li class="active">
+            <a href="<%= jobs_path %>">Jobs</a>
+          </li>
+          <li>
+            <a href="<%= new_jobs_path %>">Add a Job</a>
+          </li>
+          <li>
+            <a href="<%= companies_path %>">Companies</a>
+          </li>
+          <li>
+            <a href="<%= new_companies_path %>">Add a Company</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span9">
+      <%= yield %>
+    </div> <%# end span9 %>
+  </div> <%# end row %>
+</div> <%# end container %>
 </body>
 </html>
+

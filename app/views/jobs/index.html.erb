@@ -1,0 +1,21 @@
+<table class="table table-striped table-hover table-condensed">
+  <thead>
+    <th>Company</th>
+    <th>Title</th>
+    <th>Cities</th>
+    <th>Technologies</th>
+    <th>Applied?</th>
+  </thead>
+  <tbody>
+    <% @jobs.each do |j| %>
+      <tr rel="<%= job_path j %>">
+        <td><%= j.company.name %></td>
+        <td><%= j.title %></td>
+        <td><%= j.city_names %></td>
+        <td><%= j.technology_names %></td>
+        <td><%= j.applied ? "Yes" : "No" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
