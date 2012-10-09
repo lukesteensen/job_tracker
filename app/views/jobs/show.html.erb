@@ -32,9 +32,9 @@
           <%= @job.requires_long_application ? "Yes" : "No" %>
         </p>
         <p>
+          <strong>Challenge:</strong> <%= @job.challenge_factor %>%<br />
+          <strong>Likelihood:</strong> <%= @job.likelihood_factor %>%<br />
           <strong>Travel:</strong> <%= @job.travel_percentage %>%<br />
-          <strong>Challenge:</strong> <%= @job.likelihood_factor %>%<br />
-          <strong>Likelihood:</strong> <%= @job.challenge_factor %>%<br />
         </p>
       </div>
     </div>
