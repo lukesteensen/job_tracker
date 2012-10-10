@@ -1,9 +1,11 @@
-<table class="table table-striped table-hover table-condensed">
+<table class="table table-striped table-hover table-condensed datatable">
   <thead>
     <th>Company</th>
     <th>Title</th>
     <th>Cities</th>
     <th>Technologies</th>
+    <th>Challenge</th>
+    <th>Likelihood</th>
     <th>Applied?</th>
     <th>Cover Letter?</th>
     <th>Long App?</th>
@@ -15,6 +17,8 @@
         <td><%= j.title %></td>
         <td><%= j.city_names %></td>
         <td><%= j.technology_names %></td>
+        <td><%= j.challenge_factor %>%</td>
+        <td><%= j.likelihood_factor %>%</td>
         <td><%= j.applied ? "Yes" : "No" %></td>
         <td><%= j.requires_cover_letter ? "Yes" : "No" %></td>
         <td><%= j.requires_long_application ? "Yes" : "No" %></td>

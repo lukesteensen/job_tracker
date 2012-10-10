@@ -1,7 +1,8 @@
 class JobsController < ApplicationController
 
     def index
-      @jobs = Job.all
+      # @jobs = Job.order("challenge_factor DESC, likelihood_factor DESC")
+      @jobs = Job.includes(:company, :technologies, :cities).all
     end
 
     def show
