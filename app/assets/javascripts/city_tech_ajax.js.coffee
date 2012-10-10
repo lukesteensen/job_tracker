@@ -51,6 +51,7 @@ $(document).ready ->
             "<option value=\"#{ response.id }\">#{ response.name }</option>"
           )
           $("#new_company").val("")
+          $("#job_company_id").val(response.id)
         dataType: "json"
       )
     else
